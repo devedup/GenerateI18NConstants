@@ -12,8 +12,8 @@
 		552DB3C01C205EDD00FB0B6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 552DB3BE1C205EDD00FB0B6B /* Main.storyboard */; };
 		552DB3C21C205EDD00FB0B6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552DB3C11C205EDD00FB0B6B /* Assets.xcassets */; };
 		552DB3C51C205EDD00FB0B6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 552DB3C31C205EDD00FB0B6B /* LaunchScreen.storyboard */; };
-		552DB3CE1C205F2B00FB0B6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 552DB3CD1C205F2B00FB0B6B /* Localizable.strings */; };
-		552DB3E21C20751B00FB0B6B /* LocalizedStringsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552DB3E11C20751B00FB0B6B /* LocalizedStringsConstants.swift */; };
+		552DB3E21C20751B00FB0B6B /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552DB3E11C20751B00FB0B6B /* Localized.swift */; };
+		797D35DD1C20844D00432650 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 797D35DF1C20844D00432650 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,10 +24,9 @@
 		552DB3C11C205EDD00FB0B6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		552DB3C41C205EDD00FB0B6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		552DB3C61C205EDD00FB0B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		552DB3CD1C205F2B00FB0B6B /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		552DB3D21C205FDE00FB0B6B /* Generate-Swift-L18N-Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Generate-Swift-L18N-Constants.swift"; path = "Scripts/Generate-Swift-L18N-Constants.swift"; sourceTree = SOURCE_ROOT; };
-		552DB3D31C20692A00FB0B6B /* ConstantsTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConstantsTemplate.swift; path = Scripts/ConstantsTemplate.swift; sourceTree = SOURCE_ROOT; };
-		552DB3E11C20751B00FB0B6B /* LocalizedStringsConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedStringsConstants.swift; sourceTree = "<group>"; };
+		552DB3E11C20751B00FB0B6B /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		797D35DE1C20844D00432650 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		797D35E01C20845000432650 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +44,6 @@
 			isa = PBXGroup;
 			children = (
 				552DB3D71C20737800FB0B6B /* Classes */,
-				552DB3CF1C205F3900FB0B6B /* Scripts */,
 				552DB3B91C205EDD00FB0B6B /* GenerateI18NConstantsDemo */,
 				552DB3B81C205EDD00FB0B6B /* Products */,
 			);
@@ -68,19 +66,9 @@
 				552DB3C11C205EDD00FB0B6B /* Assets.xcassets */,
 				552DB3C31C205EDD00FB0B6B /* LaunchScreen.storyboard */,
 				552DB3C61C205EDD00FB0B6B /* Info.plist */,
-				552DB3CD1C205F2B00FB0B6B /* Localizable.strings */,
+				797D35DF1C20844D00432650 /* Localizable.strings */,
 			);
 			path = GenerateI18NConstantsDemo;
-			sourceTree = "<group>";
-		};
-		552DB3CF1C205F3900FB0B6B /* Scripts */ = {
-			isa = PBXGroup;
-			children = (
-				552DB3D21C205FDE00FB0B6B /* Generate-Swift-L18N-Constants.swift */,
-				552DB3D31C20692A00FB0B6B /* ConstantsTemplate.swift */,
-			);
-			name = Scripts;
-			path = ../Scripts;
 			sourceTree = "<group>";
 		};
 		552DB3D71C20737800FB0B6B /* Classes */ = {
@@ -95,7 +83,7 @@
 		552DB3D81C20737800FB0B6B /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				552DB3E11C20751B00FB0B6B /* LocalizedStringsConstants.swift */,
+				552DB3E11C20751B00FB0B6B /* Localized.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -160,7 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				552DB3C51C205EDD00FB0B6B /* LaunchScreen.storyboard in Resources */,
-				552DB3CE1C205F2B00FB0B6B /* Localizable.strings in Resources */,
+				797D35DD1C20844D00432650 /* Localizable.strings in Resources */,
 				552DB3C21C205EDD00FB0B6B /* Assets.xcassets in Resources */,
 				552DB3C01C205EDD00FB0B6B /* Main.storyboard in Resources */,
 			);
@@ -175,16 +163,16 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/${TARGETNAME}/Localizable.strings",
-				"$(SRCROOT)/Scripts/ConstantsTemplate.swift",
+				"$(SRCROOT)/../Scripts/Templates/LocalizedTemplate.swift",
+				"$(SRCROOT)/${TARGETNAME}/Base.lproj/Localizable.strings",
 			);
 			name = "Generate I18N Constants";
 			outputPaths = (
-				"$(SRCROOT)/${TARGETNAME}/Classes/Constants/LocalizedStringsConstants.swift",
+				"$(SRCROOT)/${TARGETNAME}/Classes/Constants/Localized.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SCRIPT_FILE=\"${SRCROOT}/Scripts/Generate-Swift-L18N-Constants.swift\"\n\necho \"Running a custom build phase script: $SCRIPT_FILE\"\n\n${SCRIPT_FILE} \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_INPUT_FILE_1}\" \"${SCRIPT_OUTPUT_FILE_0}\"\necho \"End of script\"\n\n#\"${SCRIPT_OUTPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_1}\"\nscriptExitStatus=$?\necho \"DONE with script: ${SCRIPT_FILE} (exitStatus=${scriptExitStatus})\\n\\n\"\nexit \"${scriptExitStatus}\"";
+			shellScript = "SCRIPT_FILE=\"${SRCROOT}/../Scripts/Generate-Swift-L18N-Constants.swift\"\n\necho \"Running a custom build phase script: $SCRIPT_FILE\"\n\n${SCRIPT_FILE} \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_INPUT_FILE_1}\" \"${SCRIPT_OUTPUT_FILE_0}\"\necho \"End of script\"\n\n#\"${SCRIPT_OUTPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_1}\"\nscriptExitStatus=$?\necho \"DONE with script: ${SCRIPT_FILE} (exitStatus=${scriptExitStatus})\\n\\n\"\nexit \"${scriptExitStatus}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -194,7 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				552DB3BD1C205EDD00FB0B6B /* ViewController.swift in Sources */,
-				552DB3E21C20751B00FB0B6B /* LocalizedStringsConstants.swift in Sources */,
+				552DB3E21C20751B00FB0B6B /* Localized.swift in Sources */,
 				552DB3BB1C205EDD00FB0B6B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,6 +204,15 @@
 				552DB3C41C205EDD00FB0B6B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		797D35DF1C20844D00432650 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				797D35DE1C20844D00432650 /* Base */,
+				797D35E01C20845000432650 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

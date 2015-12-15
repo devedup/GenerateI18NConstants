@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  GenerateI18NConstantsDemo
+
+  Created by David Casserly on 15/12/2015.
+  Copyright © 2015 DevedUpLtd. All rights reserved.
+*/
+
+"app.testing" = "This is the NOT THE DEMO app of GenerateI18NConstantsDemo";
+"app.welcome.message" = "Welcome, %@";
