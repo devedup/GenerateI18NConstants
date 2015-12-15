@@ -157,10 +157,11 @@
 			);
 			name = "Generate I18N Constants";
 			outputPaths = (
+				"$(SRCROOT)/${TARGETNAME}/Classes/Constants/LocalizedStringsConstants.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SCRIPT_FILE=\"${SRCROOT}/Scripts/Generate-Swift-L18N-Constants.swift\"\n\necho \"Running a custom build phase script: $SCRIPT_FILE\"\n\n${SCRIPT_FILE} \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"\n\necho \"End of script\"\n\n#\"${SCRIPT_OUTPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_1}\"\nscriptExitStatus=$?\necho \"DONE with script: ${SCRIPT_FILE} (exitStatus=${scriptExitStatus})\\n\\n\"\nexit \"${scriptExitStatus}\"";
+			shellScript = "SCRIPT_FILE=\"${SRCROOT}/Scripts/Generate-Swift-L18N-Constants.swift\"\n\necho \"Running a custom build phase script: $SCRIPT_FILE\"\n\n${SCRIPT_FILE} \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"\necho \"End of script\"\n\n#\"${SCRIPT_OUTPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_1}\"\nscriptExitStatus=$?\necho \"DONE with script: ${SCRIPT_FILE} (exitStatus=${scriptExitStatus})\\n\\n\"\nexit \"${scriptExitStatus}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

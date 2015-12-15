@@ -9,21 +9,31 @@ var outputPath: String?
 // Process the arguments
 print("Process.arguments gave args:")
 guard Process.arguments.count == 3 else {
-	fatalError()
+	fatalError("We should have 3 arguments into the script")
 }
+//for arg in Process.arguments {
+//	print("Arg: \(arg)")
+//}
+//print("Arg count is \(Process.arguments.count) ")
+
 inputPath = Process.arguments[1]
 outputPath = Process.arguments[2]
 
 // Read the strings file
-guard let localizedInputPath = inputPath else {
-	fatalError()
+var stringsDict: [NSObject: AnyObject]?
+guard let localizedInputPath = inputPath else{
+	fatalError("We should have the input path of the Localizable.strings")
 }
-if let stringsData = NSData(contentsOfFile: localizedInputPath) {
-	var datastring = NSString(data:stringsData, encoding:NSUTF8StringEncoding) as String?
-	print("Strings data \(datastring)")
+if let localizedData = NSData(contentsOfFile: localizedInputPath),
+	let localizedString = NSString(data:localizedData, encoding:NSUTF8StringEncoding) as String?
+{
+	stringsDict = localizedString.propertyListFromStringsFileFormat()
 }
 
-
+// We now have all the strings in stringsDict
+guard let stringsDict = stringsDict else {
+	fatalError("We should have a dictionary of strings")
+}
 
 
 

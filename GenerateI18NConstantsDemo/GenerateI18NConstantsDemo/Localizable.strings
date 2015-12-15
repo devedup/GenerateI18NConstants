@@ -5,3 +5,6 @@
   Created by David Casserly on 15/12/2015.
   Copyright © 2015 DevedUpLtd. All rights reserved.
 */
+
+
+"my.string"="value of my string";
