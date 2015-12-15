@@ -11,17 +11,13 @@ Localized.WelcomeMessage.string("Dan")
 
 enum Localized: CustomStringConvertible
 {
-	
 	// %CASE_DECLARATIONS%
-	
 	var description : String
+	{
+		switch self
 		{
-			switch self
-			{
-				
-				// %CASE_DESCRIPTIONS%
-
-			}
+			// %CASE_DESCRIPTIONS%
+		}
 	}
 	
 	func string(args: CVarArgType...) -> String
@@ -29,4 +25,5 @@ enum Localized: CustomStringConvertible
 		let format = NSLocalizedString(self.description, comment: self.description)
 		return String(format: format, arguments: args)
 	}
+	
 }

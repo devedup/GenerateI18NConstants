@@ -14,15 +14,12 @@ enum Localized: CustomStringConvertible
 	
 	case MyString
 
-	
 	var description : String
-		{
-			switch self
+	{
+		switch self
 			{
-				
 				case .MyString:
 					return "my.string"
-
 			}
 	}
 	
@@ -31,4 +28,5 @@ enum Localized: CustomStringConvertible
 		let format = NSLocalizedString(self.description, comment: self.description)
 		return String(format: format, arguments: args)
 	}
+	
 }
