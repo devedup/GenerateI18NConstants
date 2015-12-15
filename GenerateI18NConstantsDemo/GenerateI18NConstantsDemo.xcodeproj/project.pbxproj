@@ -24,7 +24,7 @@
 		552DB3C41C205EDD00FB0B6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		552DB3C61C205EDD00FB0B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		552DB3CD1C205F2B00FB0B6B /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		552DB3D01C205F3900FB0B6B /* Generate-Swift-L18N-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Generate-Swift-L18N-Constants.swift"; sourceTree = "<group>"; };
+		552DB3D21C205FDE00FB0B6B /* Generate-Swift-L18N-Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Generate-Swift-L18N-Constants.swift"; path = "Scripts/Generate-Swift-L18N-Constants.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 		552DB3CF1C205F3900FB0B6B /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				552DB3D01C205F3900FB0B6B /* Generate-Swift-L18N-Constants.swift */,
+				552DB3D21C205FDE00FB0B6B /* Generate-Swift-L18N-Constants.swift */,
 			);
 			name = Scripts;
 			path = ../Scripts;
