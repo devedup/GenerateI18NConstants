@@ -5,14 +5,14 @@ import Foundation
 /**
 Usage:
 
-Localized.LoadError.string()
-Localized.WelcomeMessage.string("Dan")
+Localized.LoadError
+Localized.WelcomeMessage.with("Dan")
 */
 
 enum Localized: CustomStringConvertible
 {
 	// %CASE_DECLARATIONS%
-	var description : String
+	var key : String
 	{
 		switch self
 		{
@@ -20,10 +20,14 @@ enum Localized: CustomStringConvertible
 		}
 	}
 	
-	func string(args: CVarArgType...) -> String
+	var description : String
 	{
-		let format = NSLocalizedString(self.description, comment: self.description)
-		return String(format: format, arguments: args)
+		return NSLocalizedString(self.key, comment: self.key)
 	}
 	
+	func with(args: CVarArgType...) -> String
+	{
+		let format = NSLocalizedString(self.key, comment: self.key)
+		return String(format: format, arguments: args)
+	}
 }
