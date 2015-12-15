@@ -23,8 +23,8 @@ Returns a localized version of the string, with the parameter 'Dan'.
 ## Installation
 * Add a run script in 'Build Phases' to the target that executes the script below.
 * Add the Localizable.strings (or Base.lproj/Localizable.strings if you're localized) to the input files section of the build phase script.
-* Add the ConstantsTemplate.swift to the input files section of the build phase script.
-* Add LocalizedStringsConstants.swift to the output file location for where your constants will be generated.
+* Add the Templates/LocalizedTemplate.swift to the input files section of the build phase script.
+* Add Localized.swift to the output file location for where your constants will be generated.
 * Build your project.
 
 
