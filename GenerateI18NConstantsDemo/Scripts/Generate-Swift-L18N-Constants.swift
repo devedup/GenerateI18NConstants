@@ -39,7 +39,7 @@ guard let stringsDict = stringsDict else {
 func buildCaseStatements() -> [(casename: String, description: String)] {
 	var templateReplacements = [(casename: String, description: String)]()
 	for key in stringsDict.keys {
-		let camelCaseKey = key // remove dots and camel case
+		let camelCaseKey = camelCase(key as! String)
 		let casename = "case \(camelCaseKey)\n"
 		let description = "case .\(camelCaseKey):\n\treturn \"\(key)\""
 		templateReplacements += [(casename, description)]
@@ -47,6 +47,13 @@ func buildCaseStatements() -> [(casename: String, description: String)] {
 	return templateReplacements
 }
 
+func camelCase(key: String) -> String
+{
+	let words = key.componentsSeparatedByString(".")
+	let camelCase = words.map({$0.capitalizedString})
+	
+	return camelCase.joinWithSeparator("")
+}
 
 let caseStatements = buildCaseStatements()
 print("\(caseStatements)")
