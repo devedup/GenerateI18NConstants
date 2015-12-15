@@ -12,14 +12,38 @@ print("Process.arguments gave args:")
 guard Process.arguments.count == 4 else {
 	fatalError("We should have 3 arguments into the script")
 }
-//for arg in Process.arguments {
-//	print("Arg: \(arg)")
-//}
-//print("Arg count is \(Process.arguments.count) ")
 
-inputPath = Process.arguments[1]
-templatePath = Process.arguments[2]
-outputPath = Process.arguments[3]
+// Arguments
+func parseArguments(arguments: [String]) {
+	for argument in arguments {
+		if argument.lowercaseString.rangeOfString("template") != nil {
+			templatePath = argument
+		}
+		else if argument.rangeOfString(".strings") != nil {
+			inputPath = argument
+		}
+		else if argument.rangeOfString(".swift") != nil {
+			outputPath = argument
+		}
+	}
+}
+
+// First argument is always the current script, discard it
+var arguments = Process.arguments
+arguments.removeAtIndex(0)
+parseArguments(arguments)
+
+guard inputPath != nil else {
+	fatalError("Please supply string input path")
+}
+
+guard outputPath != nil else {
+	fatalError("Please supply Localize swift file output path")
+}
+
+guard templatePath != nil else {
+	fatalError("Please supply template input path")
+}
 
 // Read the strings file
 var stringsDict: [NSObject: AnyObject]?
@@ -49,8 +73,7 @@ func buildCaseStatements() -> [(casename: String, description: String)] {
 	return templateReplacements
 }
 
-func camelCase(key: String) -> String
-{
+func camelCase(key: String) -> String {
 	let words = key.componentsSeparatedByString(".")
 	let camelCase = words.map({$0.capitalizedString})
 	
