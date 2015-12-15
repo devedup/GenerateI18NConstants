@@ -2,6 +2,9 @@
 
 import Foundation
 
+let DECLARATIONS = "// %CASE_DECLARATIONS%"
+let DESCRIPTIONS = "// %CASE_DESCRIPTIONS%"
+
 // Input and Output
 var inputPath: String?
 var outputPath: String?
@@ -85,16 +88,28 @@ print("\(caseStatements)")
 
 func caseDeclarations() -> String {
 	var outputString = ""
-	for caseStatement in caseStatements {
-		outputString += caseStatement.casename
+	for caseStatement in caseStatements
+	{
+		if outputString == "" {
+			outputString = caseStatement.casename
+			continue
+		}
+		
+		outputString += "\t\(caseStatement.casename)"
 	}
 	return outputString
 }
 
 func caseDescriptions() -> String {
 	var outputString = ""
-	for caseStatement in caseStatements {
-		outputString += caseStatement.description
+	for caseStatement in caseStatements
+	{
+		if outputString == "" {
+			outputString = caseStatement.description
+			continue
+		}
+		
+		outputString += "\n\t\t\t\(caseStatement.description)"
 	}
 	return outputString
 }
@@ -109,9 +124,9 @@ func writeOutputToFile() {
 	if let templateData = NSData(contentsOfFile: templatePath),
 		var templateString = NSString(data:templateData, encoding:NSUTF8StringEncoding) as String?
 	{
-		templateString = templateString.stringByReplacingOccurrencesOfString("// %CASE_DECLARATIONS%", withString: caseDeclarations())
+		templateString = templateString.stringByReplacingOccurrencesOfString(DECLARATIONS, withString: caseDeclarations())
 		
-		templateString = templateString.stringByReplacingOccurrencesOfString("// %CASE_DESCRIPTIONS%", withString: caseDescriptions())
+		templateString = templateString.stringByReplacingOccurrencesOfString(DESCRIPTIONS, withString: caseDescriptions())
 
 		if let data = templateString.dataUsingEncoding(NSUTF8StringEncoding) {
 			data.writeToFile(outputPath, atomically: true)
