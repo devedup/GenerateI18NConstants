@@ -21,7 +21,7 @@ outputPath = Process.arguments[2]
 
 // Read the strings file
 var stringsDict: [NSObject: AnyObject]?
-guard let localizedInputPath = inputPath else{
+guard let localizedInputPath = inputPath else {
 	fatalError("We should have the input path of the Localizable.strings")
 }
 if let localizedData = NSData(contentsOfFile: localizedInputPath),
@@ -35,5 +35,18 @@ guard let stringsDict = stringsDict else {
 	fatalError("We should have a dictionary of strings")
 }
 
+// Build case statements
+func buildCaseStatements() -> [(casename: String, description: String)] {
+	var templateReplacements = [(casename: String, description: String)]()
+	for key in stringsDict.keys {
+		let camelCaseKey = key // remove dots and camel case
+		let casename = "case \(camelCaseKey)\n"
+		let description = "case .\(camelCaseKey):\n\treturn \"\(key)\""
+		templateReplacements += [(casename, description)]
+	}
+	return templateReplacements
+}
 
 
+let caseStatements = buildCaseStatements()
+print("\(caseStatements)")
