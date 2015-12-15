@@ -12,7 +12,7 @@ Localized.WelcomeMessage.string("Dan")
 enum Localized: CustomStringConvertible
 {
 	
-	case mystring
+	case MyString
 
 	
 	var description : String
@@ -20,8 +20,8 @@ enum Localized: CustomStringConvertible
 			switch self
 			{
 				
-				case .mystring:
-					return "mystring"
+				case .MyString:
+					return "my.string"
 
 			}
 	}
