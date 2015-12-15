@@ -1,5 +1,5 @@
 # GenerateI18NConstants
-Script, written in Swift, which generates a constants file to enable compile time checking and a more Swift way of localizing strings.
+Script, written in Swift 2.0, which generates a constants file to enable compile time checking and a more Swift way of localizing strings.
 
 ## What it does
 👍 Keep the Localizable.strings file your app already uses.    
@@ -41,3 +41,14 @@ scriptExitStatus=$?
 echo "DONE with script: ${SCRIPT_FILE} (exitStatus=${scriptExitStatus})\n\n"
 exit "${scriptExitStatus}"
 ````
+
+### Authors
+[David Casserly](https://github.com/devedup)    
+[Daniel Love](https://github.com/4eleven7)
+
+### Contribute
+* Fork
+* Create your feature branch (git checkout -b my-new-feature)
+* Commit your changes (git commit -am 'Add some feature')
+* Push to the branch (git push origin my-new-feature)
+* Create new Pull Request
