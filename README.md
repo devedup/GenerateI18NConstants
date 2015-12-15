@@ -12,15 +12,14 @@ Script, written in Swift 2.0, which generates a constants file to enable compile
 ❌ Run [genstrings](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/genstrings.1.html).    
 🚫 Allow language switching.
 
-## Usage
-
+### Usage
 Returns a localized version of the string.   
 ``Localized.AppTesting``
 
 Returns a localized version of the string, with the parameter 'Dan'.   
 ``Localized.AppWelcomeMessage.with("Dan")``
 
-## Installation
+### Installation
 * Add a run script in 'Build Phases' to the target that executes the script below.
 * Add the Localizable.strings (or Base.lproj/Localizable.strings if you're localized) to the input files section of the build phase script.
 * Add the Templates/LocalizedTemplate.swift to the input files section of the build phase script.
@@ -28,7 +27,7 @@ Returns a localized version of the string, with the parameter 'Dan'.
 * Build your project.
 
 
-## Build Script
+### Build Script
 ````
 SCRIPT_FILE="${SRCROOT}/Scripts/Generate-Swift-L18N-Constants.swift"
 echo "Running a custom build phase script: $SCRIPT_FILE"
@@ -47,8 +46,11 @@ exit "${scriptExitStatus}"
 [Daniel Love](https://github.com/4eleven7)
 
 ### Contribute
-* Fork
-* Create your feature branch (git checkout -b my-new-feature)
-* Commit your changes (git commit -am 'Add some feature')
-* Push to the branch (git push origin my-new-feature)
-* Create new Pull Request
+1. Fork
+1. Create your feature branch (git checkout -b my-new-feature)
+1. Commit your changes (git commit -am 'Add some feature')
+1. Push to the branch (git push origin my-new-feature)
+1. Create new Pull Request
+
+### License
+GenerateI18NConstants is available under the MIT license. See the LICENSE file for more info.
