@@ -20,3 +20,25 @@ Returns a localized version of the string.
 
 Returns a localized version of the string, with the parameter 'Dan'.   
 ``Localized.AppWelcomeMessage.with("Dan")``
+
+## Installation
+* Add a run script in 'Build Phases' to the target that executes the script below.
+* Add the Localizable.strings (or Base.lproj/Localizable.strings if you're localized) to the input files section of the build phase script.
+* Add the ConstantsTemplate.swift to the input files section of the build phase script.
+* Add LocalizedStringsConstants.swift to the output file location for where your constants will be generated.
+* Build your project.
+
+
+## Build Script
+````
+SCRIPT_FILE="${SRCROOT}/Scripts/Generate-Swift-L18N-Constants.swift"
+echo "Running a custom build phase script: $SCRIPT_FILE"
+
+${SCRIPT_FILE} "${SCRIPT_INPUT_FILE_0}" "${SCRIPT_INPUT_FILE_1}" "${SCRIPT_OUTPUT_FILE_0}"
+echo "End of script"
+
+#"${SCRIPT_OUTPUT_FILE_0}" "${SCRIPT_OUTPUT_FILE_1}"
+scriptExitStatus=$?
+echo "DONE with script: ${SCRIPT_FILE} (exitStatus=${scriptExitStatus})\n\n"
+exit "${scriptExitStatus}"
+````
