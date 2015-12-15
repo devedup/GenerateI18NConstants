@@ -12,14 +12,16 @@ Localized.WelcomeMessage.string("Dan")
 enum Localized: CustomStringConvertible
 {
 	
-	// %CASE_DECLARATIONS%
+	case mystring
+
 	
 	var description : String
 		{
 			switch self
 			{
 				
-				// %CASE_DESCRIPTIONS%
+				case .mystring:
+					return "mystring"
 
 			}
 	}

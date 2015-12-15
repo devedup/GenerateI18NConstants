@@ -13,6 +13,7 @@
 		552DB3C21C205EDD00FB0B6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552DB3C11C205EDD00FB0B6B /* Assets.xcassets */; };
 		552DB3C51C205EDD00FB0B6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 552DB3C31C205EDD00FB0B6B /* LaunchScreen.storyboard */; };
 		552DB3CE1C205F2B00FB0B6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 552DB3CD1C205F2B00FB0B6B /* Localizable.strings */; };
+		552DB3E21C20751B00FB0B6B /* LocalizedStringsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552DB3E11C20751B00FB0B6B /* LocalizedStringsConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		552DB3CD1C205F2B00FB0B6B /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		552DB3D21C205FDE00FB0B6B /* Generate-Swift-L18N-Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Generate-Swift-L18N-Constants.swift"; path = "Scripts/Generate-Swift-L18N-Constants.swift"; sourceTree = SOURCE_ROOT; };
 		552DB3D31C20692A00FB0B6B /* ConstantsTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConstantsTemplate.swift; path = Scripts/ConstantsTemplate.swift; sourceTree = SOURCE_ROOT; };
+		552DB3E11C20751B00FB0B6B /* LocalizedStringsConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedStringsConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,7 @@
 		552DB3AE1C205EDD00FB0B6B = {
 			isa = PBXGroup;
 			children = (
+				552DB3D71C20737800FB0B6B /* Classes */,
 				552DB3CF1C205F3900FB0B6B /* Scripts */,
 				552DB3B91C205EDD00FB0B6B /* GenerateI18NConstantsDemo */,
 				552DB3B81C205EDD00FB0B6B /* Products */,
@@ -78,6 +81,23 @@
 			);
 			name = Scripts;
 			path = ../Scripts;
+			sourceTree = "<group>";
+		};
+		552DB3D71C20737800FB0B6B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				552DB3D81C20737800FB0B6B /* Constants */,
+			);
+			name = Classes;
+			path = GenerateI18NConstantsDemo/Classes;
+			sourceTree = "<group>";
+		};
+		552DB3D81C20737800FB0B6B /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				552DB3E11C20751B00FB0B6B /* LocalizedStringsConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +176,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/${TARGETNAME}/Localizable.strings",
+				"$(SRCROOT)/Scripts/ConstantsTemplate.swift",
 			);
 			name = "Generate I18N Constants";
 			outputPaths = (
@@ -163,7 +184,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SCRIPT_FILE=\"${SRCROOT}/Scripts/Generate-Swift-L18N-Constants.swift\"\n\necho \"Running a custom build phase script: $SCRIPT_FILE\"\n\n${SCRIPT_FILE} \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_0}\"\necho \"End of script\"\n\n#\"${SCRIPT_OUTPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_1}\"\nscriptExitStatus=$?\necho \"DONE with script: ${SCRIPT_FILE} (exitStatus=${scriptExitStatus})\\n\\n\"\nexit \"${scriptExitStatus}\"";
+			shellScript = "SCRIPT_FILE=\"${SRCROOT}/Scripts/Generate-Swift-L18N-Constants.swift\"\n\necho \"Running a custom build phase script: $SCRIPT_FILE\"\n\n${SCRIPT_FILE} \"${SCRIPT_INPUT_FILE_0}\" \"${SCRIPT_INPUT_FILE_1}\" \"${SCRIPT_OUTPUT_FILE_0}\"\necho \"End of script\"\n\n#\"${SCRIPT_OUTPUT_FILE_0}\" \"${SCRIPT_OUTPUT_FILE_1}\"\nscriptExitStatus=$?\necho \"DONE with script: ${SCRIPT_FILE} (exitStatus=${scriptExitStatus})\\n\\n\"\nexit \"${scriptExitStatus}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -173,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				552DB3BD1C205EDD00FB0B6B /* ViewController.swift in Sources */,
+				552DB3E21C20751B00FB0B6B /* LocalizedStringsConstants.swift in Sources */,
 				552DB3BB1C205EDD00FB0B6B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
