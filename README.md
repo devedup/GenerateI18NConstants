@@ -20,7 +20,7 @@ Returns a localized version of the string, with the parameter 'Dan'.
 ``Localized.DemoWelcomeMessage.with("Dan")``
 
 Use the built in localisation methods, but with a compile time checked identifier.
-``NSLocalizedString(Localized.DemoGoodbyeMessage, comment: "Cya!")``
+``NSLocalizedString(Localized.DemoGoodbyeMessage.key, comment: "Cya!")``
 
 ### Installation
 * Add a run script in 'Build Phases' to the target that executes the script below.
