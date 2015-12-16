@@ -1,5 +1,7 @@
-# GenerateI18NConstants
+# GenerateI18NConstants    
 Script, written in Swift 2.0, which generates a constants file to enable compile time checking and a more Swift way of localizing strings.
+
+#### Also available: [GenerateFontConstants](https://github.com/4eleven7/GenerateFontConstants)
 
 ## What it does
 👍 Keep the Localizable.strings file your app already uses.    
