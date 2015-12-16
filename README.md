@@ -14,10 +14,13 @@ Script, written in Swift 2.0, which generates a constants file to enable compile
 
 ### Usage
 Returns a localized version of the string.   
-``Localized.AppTesting``
+``Localized.DemoTesting``
 
 Returns a localized version of the string, with the parameter 'Dan'.   
-``Localized.AppWelcomeMessage.with("Dan")``
+``Localized.DemoWelcomeMessage.with("Dan")``
+
+Use the built in localisation methods, but with a compile time checked identifier.
+``NSLocalizedString(Localized.DemoGoodbyeMessage, comment: "Cya!")``
 
 ### Installation
 * Add a run script in 'Build Phases' to the target that executes the script below.
