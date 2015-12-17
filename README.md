@@ -4,7 +4,7 @@ Script, written in Swift 2.0, which generates a constants file to enable compile
 #### Also available: [Fonts](https://github.com/4eleven7/GenerateFontConstants)
 
 ## What it does
-👍 Keep the Localizable.strings file your app already uses.    
+👍 Requires no changes to your existing Localizable.strings.    
 👏 Generates a Swift enum of your string keys.    
 ✊ Allows compile time checking of your strings.    
 🙏 More Swifty syntax. `Localized.AppTesting` instead of `NSLocalizedString("app.testing", "app testing")`.    
@@ -12,7 +12,8 @@ Script, written in Swift 2.0, which generates a constants file to enable compile
 
 ## What it doesn't do
 ❌ Run [genstrings](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/genstrings.1.html).    
-🚫 Allow language switching.
+🚫 Allow language switching via code (still have to change languages in Settings.app).   
+❗️ Currently doesn't support 'Localizable.stringsdict'
 
 ### Usage
 Returns a localized version of the string.   
@@ -25,12 +26,15 @@ Use the built in localisation methods, but with a compile time checked identifie
 ``NSLocalizedString(Localized.DemoGoodbyeMessage.key, comment: "Cya!")``
 
 ### Installation
-* Add a run script in 'Build Phases' to the target that executes the script below.
-* Add the Localizable.strings (or Base.lproj/Localizable.strings if you're localized) to the input files section of the build phase script.
-* Add the Templates/LocalizedTemplate.swift to the input files section of the build phase script.
-* Add Localized.swift to the output file location for where your constants will be generated.
+* Open your project, select your **Target** and select **Build Phases**
+* Add a new **Run Script Phase**. Maybe name it something like "Generate Localization"
+* Copy and paste the build script below into the your new build phase.
+* Add your Localizable.strings (or Base.lproj/Localizable.strings if you're localized) to the **Input Files** section of the build phase script. Example: `$(SRCROOT)/${TARGETNAME}/Base.lproj/Localizable.strings`
+* Add the Templates/LocalizedTemplate.swift to the **Input Files** section of the build phase script. Example: `$(SRCROOT)/../Scripts/Templates/LocalizedTemplate.swift`
+* Add Localized.swift to the **Output Files** for where your constants will be generated. Example: `$(SRCROOT)/${TARGETNAME}/Classes/Constants/Localized.swift`
 * Build your project.
 
+Note: The order of your input files does not matter. Just ensure that the template has the word 'template' in its filename. And you maintain the file extensions (.strings, .swift).
 
 ### Build Script
 ````
@@ -40,15 +44,14 @@ echo "Running a custom build phase script: $SCRIPT_FILE"
 ${SCRIPT_FILE} "${SCRIPT_INPUT_FILE_0}" "${SCRIPT_INPUT_FILE_1}" "${SCRIPT_OUTPUT_FILE_0}"
 echo "End of script"
 
-#"${SCRIPT_OUTPUT_FILE_0}" "${SCRIPT_OUTPUT_FILE_1}"
 scriptExitStatus=$?
 echo "DONE with script: ${SCRIPT_FILE} (exitStatus=${scriptExitStatus})\n\n"
 exit "${scriptExitStatus}"
 ````
 
 ### Authors
-[David Casserly](https://github.com/devedup)    
-[Daniel Love](https://github.com/4eleven7)
+[David Casserly](https://github.com/devedup) - [@devedup](https://twitter.com/devedup)    
+[Daniel Love](https://github.com/4eleven7) - [@4eleven7](https://twitter.com/4eleven7)
 
 ### Contribute
 1. Fork
