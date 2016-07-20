@@ -25,7 +25,7 @@ enum Localized: CustomStringConvertible
 		return NSLocalizedString(self.key, comment: self.key)
 	}
 	
-	func with(args: CVarArgType...) -> String
+	func with(args: CVarArg...) -> String
 	{
 		let format = NSLocalizedString(self.key, comment: self.key)
 		return String(format: format, arguments: args)
