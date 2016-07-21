@@ -12,8 +12,8 @@ Localized.WelcomeMessage.with("Dan")
 enum Localized: CustomStringConvertible
 {
 	class Bundles {
-    static let framework = Bundle(for: Localized.Bundles.self)
-  }
+		static let framework = Bundle(for: Localized.Bundles.self)
+	}
 
 	// %CASE_DECLARATIONS%
 	var key : String
