@@ -11,6 +11,10 @@ Localized.WelcomeMessage.with("Dan")
 
 enum Localized: CustomStringConvertible
 {
+	class Bundles {
+    static let framework = Bundle(for: Localized.Bundles.self)
+  }
+
 	// %CASE_DECLARATIONS%
 	var key : String
 	{
@@ -22,12 +26,12 @@ enum Localized: CustomStringConvertible
 	
 	var description : String
 	{
-		return NSLocalizedString(self.key, comment: self.key)
+		return NSLocalizedString(self.key, tableName: nil, bundle: Localized.Bundles.framework, value: self.key, comment: self.key)
 	}
 	
 	func with(args: CVarArg...) -> String
 	{
-		let format = NSLocalizedString(self.key, comment: self.key)
+		let format = description
 		return String(format: format, arguments: args)
 	}
 }
