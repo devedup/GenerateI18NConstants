@@ -53,8 +53,16 @@ var stringsDict: [NSObject: AnyObject]?
 guard let localizedInputPath = inputPath else {
 	fatalError("We should have the input path of the Localizable.strings")
 }
-if let localizedData = NSData(contentsOfFile: localizedInputPath),
-	let localizedString = NSString(data:localizedData as Data, encoding:String.Encoding.utf8.rawValue) as String?
+
+let url = URL(fileURLWithPath: localizedInputPath)
+let localizedData:Data?
+do {
+  localizedData = try Data(contentsOf: url)
+} catch {
+  localizedData = nil
+}
+
+if let localizedData = localizedData, let localizedString = String(data:localizedData, encoding:String.Encoding.utf8) as String?
 {
 	stringsDict = localizedString.propertyListFromStringsFileFormat()
 }
