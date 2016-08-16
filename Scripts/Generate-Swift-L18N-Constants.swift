@@ -12,7 +12,7 @@ var templatePath: String?
 
 // Process the arguments
 print("Process.arguments gave args:")
-guard Process.arguments.count == 4 else {
+guard CommandLine.arguments.count == 4 else {
 	fatalError("We should have 3 arguments into the script")
 }
 
@@ -32,7 +32,7 @@ func parseArguments(arguments: [String]) {
 }
 
 // First argument is always the current script, discard it
-var arguments = Process.arguments
+var arguments = CommandLine.arguments
 arguments.remove(at: 0)
 parseArguments(arguments: arguments)
 
@@ -49,7 +49,7 @@ guard templatePath != nil else {
 }
 
 // Read the strings file
-var stringsDict: [NSObject: AnyObject]?
+var stringsDict: [String: String]?
 guard let localizedInputPath = inputPath else {
 	fatalError("We should have the input path of the Localizable.strings")
 }
@@ -76,7 +76,7 @@ guard let stringsDict = stringsDict else {
 func buildCaseStatements() -> [(casename: String, description: String)] {
 	var templateReplacements = [(casename: String, description: String)]()
 	for key in stringsDict.keys {
-		let camelCaseKey = camelCase(key: key as! String)
+		let camelCaseKey = camelCase(key: key)
 		let casename = "case \(camelCaseKey)\n"
 		let description = "case .\(camelCaseKey):\n\t\t\t\t\treturn \"\(key)\""
 		templateReplacements.append((casename, description))
