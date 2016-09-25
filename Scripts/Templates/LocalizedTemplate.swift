@@ -5,8 +5,8 @@ import Foundation
 /**
 Usage:
 
-Localized.LoadError
-Localized.WelcomeMessage.with("Dan")
+Localized.loadError
+Localized.welcomeMessage.with("Dan")
 */
 
 enum Localized: CustomStringConvertible
@@ -29,7 +29,7 @@ enum Localized: CustomStringConvertible
 		return NSLocalizedString(self.key, tableName: nil, bundle: Localized.Bundles.framework, value: self.key, comment: self.key)
 	}
 	
-	func with(args: CVarArg...) -> String
+	func with(_ args: CVarArg...) -> String
 	{
 		let format = description
 		return String(format: format, arguments: args)

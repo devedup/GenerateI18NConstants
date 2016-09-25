@@ -5,34 +5,38 @@ import Foundation
 /**
 Usage:
 
-Localized.LoadError
-Localized.WelcomeMessage.with("Dan")
+Localized.loadError
+Localized.welcomeMessage.with("Dan")
 */
 
 enum Localized: CustomStringConvertible
 {
-	case AppTesting
-	case AppWelcomeMessage
+	class Bundles {
+		static let framework = Bundle(for: Localized.Bundles.self)
+	}
+
+	case appWelcomeMessage
+	case appTesting
 
 	var key : String
 	{
 		switch self
 		{
-			case .AppTesting:
-					return "app.testing"
-			case .AppWelcomeMessage:
+			case .appWelcomeMessage:
 					return "app.welcome.message"
+			case .appTesting:
+					return "app.testing"
 		}
 	}
 	
 	var description : String
 	{
-		return NSLocalizedString(self.key, comment: self.key)
+		return NSLocalizedString(self.key, tableName: nil, bundle: Localized.Bundles.framework, value: self.key, comment: self.key)
 	}
 	
-	func with(args: CVarArgType...) -> String
+	func with(_ args: CVarArg...) -> String
 	{
-		let format = NSLocalizedString(self.key, comment: self.key)
+		let format = description
 		return String(format: format, arguments: args)
 	}
 }

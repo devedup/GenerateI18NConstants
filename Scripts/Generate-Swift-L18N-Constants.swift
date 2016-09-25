@@ -86,8 +86,13 @@ func buildCaseStatements() -> [(casename: String, description: String)] {
 
 func camelCase(key: String) -> String {
 	let words = key.components(separatedBy: ".")
-	let camelCase = words.map({$0.capitalized})
-	
+    let camelCase: [String] = words.enumerated().map { (index, element) in
+        if index == 0 {
+            return element
+        } else {
+            return element.capitalized
+        }
+    }
 	return camelCase.joined(separator: "")
 }
 

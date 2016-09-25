@@ -14,8 +14,8 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		
-		print(Localized.AppTesting)
-		print(Localized.AppWelcomeMessage.with("Dan"))
+		print(Localized.appTesting)
+		print(Localized.appWelcomeMessage.with("Dan"))
 	}
 
 	override func didReceiveMemoryWarning() {
