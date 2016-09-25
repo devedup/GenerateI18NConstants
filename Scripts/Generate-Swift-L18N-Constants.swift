@@ -1,4 +1,4 @@
-#!/usr/bin/env xcrun swift
+#!/usr/bin/env xcrun --sdk macosx swift
 
 import Foundation
 
@@ -12,29 +12,29 @@ var templatePath: String?
 
 // Process the arguments
 print("Process.arguments gave args:")
-guard Process.arguments.count == 4 else {
+guard CommandLine.arguments.count == 4 else {
 	fatalError("We should have 3 arguments into the script")
 }
 
 // Arguments
 func parseArguments(arguments: [String]) {
 	for argument in arguments {
-		if argument.lowercaseString.rangeOfString("template") != nil {
+		if argument.lowercased().range(of: "template") != nil {
 			templatePath = argument
 		}
-		else if argument.rangeOfString(".strings") != nil {
+		else if argument.lowercased().range(of: ".strings") != nil {
 			inputPath = argument
 		}
-		else if argument.rangeOfString(".swift") != nil {
+		else if argument.lowercased().range(of: ".swift") != nil {
 			outputPath = argument
 		}
 	}
 }
 
 // First argument is always the current script, discard it
-var arguments = Process.arguments
-arguments.removeAtIndex(0)
-parseArguments(arguments)
+var arguments = CommandLine.arguments
+arguments.remove(at: 0)
+parseArguments(arguments: arguments)
 
 guard inputPath != nil else {
 	fatalError("Please supply string input path")
@@ -49,12 +49,20 @@ guard templatePath != nil else {
 }
 
 // Read the strings file
-var stringsDict: [NSObject: AnyObject]?
+var stringsDict: [String: String]?
 guard let localizedInputPath = inputPath else {
 	fatalError("We should have the input path of the Localizable.strings")
 }
-if let localizedData = NSData(contentsOfFile: localizedInputPath),
-	let localizedString = NSString(data:localizedData, encoding:NSUTF8StringEncoding) as String?
+
+let url = URL(fileURLWithPath: localizedInputPath)
+let localizedData:Data?
+do {
+  localizedData = try Data(contentsOf: url)
+} catch {
+  localizedData = nil
+}
+
+if let localizedData = localizedData, let localizedString = String(data:localizedData, encoding:String.Encoding.utf8) as String?
 {
 	stringsDict = localizedString.propertyListFromStringsFileFormat()
 }
@@ -68,19 +76,24 @@ guard let stringsDict = stringsDict else {
 func buildCaseStatements() -> [(casename: String, description: String)] {
 	var templateReplacements = [(casename: String, description: String)]()
 	for key in stringsDict.keys {
-		let camelCaseKey = camelCase(key as! String)
+		let camelCaseKey = camelCase(key: key)
 		let casename = "case \(camelCaseKey)\n"
 		let description = "case .\(camelCaseKey):\n\t\t\t\t\treturn \"\(key)\""
-		templateReplacements += [(casename, description)]
+		templateReplacements.append((casename, description))
 	}
 	return templateReplacements
 }
 
 func camelCase(key: String) -> String {
-	let words = key.componentsSeparatedByString(".")
-	let camelCase = words.map({$0.capitalizedString})
-	
-	return camelCase.joinWithSeparator("")
+	let words = key.components(separatedBy: ".")
+    let camelCase: [String] = words.enumerated().map { (index, element) in
+        if index == 0 {
+            return element
+        } else {
+            return element.capitalized
+        }
+    }
+	return camelCase.joined(separator: "")
 }
 
 let caseStatements = buildCaseStatements()
@@ -118,18 +131,20 @@ func caseDescriptions() -> String {
 func writeOutputToFile() {
 	guard let templatePath = templatePath,
 		let outputPath = outputPath else {
-		fatalError("We should have the outputPath and templatePath of the Localizable.strings")
+			fatalError("We should have the outputPath and templatePath of the Localizable.strings")
 	}
 	
-	if let templateData = NSData(contentsOfFile: templatePath),
-		var templateString = NSString(data:templateData, encoding:NSUTF8StringEncoding) as String?
+	
+	let templateData = try! Data(contentsOf: URL(fileURLWithPath: templatePath))
+	let outputUrl = URL(fileURLWithPath: outputPath)
+	if var templateString = String(data:templateData as Data, encoding:String.Encoding(rawValue: String.Encoding.utf8.rawValue)) as String?
 	{
-		templateString = templateString.stringByReplacingOccurrencesOfString(DECLARATIONS, withString: caseDeclarations())
+		templateString = templateString.replacingOccurrences(of: DECLARATIONS, with: caseDeclarations())
 		
-		templateString = templateString.stringByReplacingOccurrencesOfString(DESCRIPTIONS, withString: caseDescriptions())
-
-		if let data = templateString.dataUsingEncoding(NSUTF8StringEncoding) {
-			data.writeToFile(outputPath, atomically: true)
+		templateString = templateString.replacingOccurrences(of: DESCRIPTIONS, with: caseDescriptions())
+		
+		if let data = templateString.data(using: String.Encoding.utf8) {
+			try! data.write(to: outputUrl, options: .atomic)
 		}
 		
 	}

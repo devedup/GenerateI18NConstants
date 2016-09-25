@@ -1,0 +1,28 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A43501DF81E737B92CFCF199E3BC2824B8D034FD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "A43501DF81E737B92CFCF199E3BC2824B8D034FD" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "23A83C26-88D3-4288-90CD-51700F022850",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "A43501DF81E737B92CFCF199E3BC2824B8D034FD" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "GenerateI18NConstantsDemo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "GenerateI18NConstantsDemo\/GenerateI18NConstantsDemo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/devedup\/GenerateI18NConstants.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A43501DF81E737B92CFCF199E3BC2824B8D034FD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/devedup\/GenerateI18NConstants.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A43501DF81E737B92CFCF199E3BC2824B8D034FD"
+    }
+  ]
+}
