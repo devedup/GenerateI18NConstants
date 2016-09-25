@@ -1,5 +1,5 @@
 # GenerateI18NConstants    
-Script, written in Swift 2.0, which generates a constants file to enable compile time checking and a more Swift way of localizing strings.
+Script, written in Swift 3.0, which generates a constants file to enable compile time checking and a more Swift way of localizing strings.
 
 #### Also available: [Fonts](https://github.com/4eleven7/GenerateFontConstants)
 
@@ -7,7 +7,7 @@ Script, written in Swift 2.0, which generates a constants file to enable compile
 👍 Requires no changes to your existing Localizable.strings.    
 👏 Generates a Swift enum of your string keys.    
 ✊ Allows compile time checking of your strings.    
-🙏 More Swifty syntax. `Localized.AppTesting` instead of `NSLocalizedString("app.testing", "app testing")`.    
+🙏 More Swifty syntax. `Localized.appTesting` instead of `NSLocalizedString("app.testing", "app testing")`.    
 💪 Allows parameters using the `.with(...)` method.    
 
 ## What it doesn't do
@@ -17,13 +17,13 @@ Script, written in Swift 2.0, which generates a constants file to enable compile
 
 ### Usage
 Returns a localized version of the string.   
-``Localized.DemoTesting``
+``Localized.demoTesting``
 
 Returns a localized version of the string, with the parameter 'Dan'.   
-``Localized.DemoWelcomeMessage.with("Dan")``
+``Localized.demoWelcomeMessage.with("Dan")``
 
 Use the built in localisation methods, but with a compile time checked identifier.
-``NSLocalizedString(Localized.DemoGoodbyeMessage.key, comment: "Cya!")``
+``NSLocalizedString(Localized.demoGoodbyeMessage.key, comment: "Cya!")``
 
 ### Installation
 * Open your project, select your **Target** and select **Build Phases**
