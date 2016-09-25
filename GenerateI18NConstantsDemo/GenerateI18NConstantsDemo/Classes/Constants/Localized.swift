@@ -9,8 +9,8 @@ Localized.loadError
 Localized.welcomeMessage.with("Dan")
 */
 
-enum Localized: CustomStringConvertible
-{
+enum Localized: CustomStringConvertible {
+    
 	class Bundles {
 		static let framework = Bundle(for: Localized.Bundles.self)
 	}
@@ -18,10 +18,8 @@ enum Localized: CustomStringConvertible
 	case appWelcomeMessage
 	case appTesting
 
-	var key : String
-	{
-		switch self
-		{
+	var key : String {
+		switch self {
 			case .appWelcomeMessage:
 					return "app.welcome.message"
 			case .appTesting:
@@ -29,13 +27,11 @@ enum Localized: CustomStringConvertible
 		}
 	}
 	
-	var description : String
-	{
+	var description : String {
 		return NSLocalizedString(self.key, tableName: nil, bundle: Localized.Bundles.framework, value: self.key, comment: self.key)
 	}
 	
-	func with(_ args: CVarArg...) -> String
-	{
+	func with(_ args: CVarArg...) -> String {
 		let format = description
 		return String(format: format, arguments: args)
 	}
